@@ -17,6 +17,7 @@ const setRoom = (roomX) => {
 	document.cookie = `room=room${roomX};path=/;`
 	curRoom = roomX;
 }
+
 var condVal = {}
 for (let i = 1; i<= numRoom; i++){
 	condVal.push = ({
@@ -194,25 +195,26 @@ function getairconsignal(number){
 document.addEventListener("DOMContentLoaded", () => {
 	// read cookie
 	const url = document.cookie;
+	window.ondragstart = () => { return false; };	
 	//~ setRoom(url.slice(url.length-1));
-	setRoom(1);
+	// setRoom(1);
 	// read fan
 	for (let i = 1; i <= numRoom; ++i) {
 		setfanSlider(i)
 	}
-	try {
-		for (let i = 1; i <= numRoom; i++){
-			document.getElementById("room"+i+"settemp").value = gettempvalue(i);
-			document.getElementById("fanspeedimageroom"+i).src = getfanvalue(i);
-			document.getElementById(getairconvalue(i)).style.color="#0AFFEF";
-			if(getairconvalue(i).charAt(getairconvalue(i).length-1) == 3){
-				var temp = document.getElementById("settempwrapper"+i);
-				temp.style.visibility = 'hidden';
-				}
-			};
-	} catch (e) {
-		console.log(`Room3 air con is off`);
-	}
+	//~ try {
+		//~ for (let i = 1; i <= numRoom; i++){
+			//~ document.getElementById("room"+i+"settemp").value = gettempvalue(i);
+			//~ document.getElementById("fanspeedimageroom"+i).src = getfanvalue(i);
+			//~ document.getElementById(getairconvalue(i)).style.color="#0AFFEF";
+			//~ if(getairconvalue(i).charAt(getairconvalue(i).length-1) == 3){
+				//~ var temp = document.getElementById("settempwrapper"+i);
+				//~ temp.style.visibility = 'hidden';
+				//~ }
+			//~ };
+	//~ } catch (e) {
+		//~ console.log(`Room3 air con is off`);
+	//~ }
 });
 
 function toggleLight() {
