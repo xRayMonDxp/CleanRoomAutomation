@@ -1,3 +1,4 @@
+
 :root{
 	--main-box-shadow: -2px 2px 5px 2px #707070, 2px -2px 5px 2px #000000;
 }
@@ -15,8 +16,9 @@
 }
 
 .room1{
-	display: block;
+	flex: 50%;
 }
+/*
 .room2{
 	display: none;
 }
@@ -29,18 +31,40 @@
 .room5{
 	display: none;
 }
+*/
+
+html {
+	height: 100%;
+}
 
 body {
 	background: #243441;
 	overflow-x: hidden;
 	/*overflow-y: hidden;*/
 	text-align: center;
+	height: 100%;
+	margin: auto;
 }
 .grid{
+/*
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-columns: 50% 50%;
 	grid-template-rows: 100%;
+*/
+	display: flex;
+/*
+	align-items: center;
+*/
 }
+
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+}
+
 h1{
 	font-family: "Helvetica", sans-serif;
 	color: white;
@@ -53,7 +77,7 @@ h2{
     flex: flex;
 }
 h3{
-	color: white;	
+	color: white;
 	width: auto;
 	text-align: center;
 }
@@ -62,9 +86,10 @@ h3{
 	grid-row: 1;
 	/*border: 1px solid;
 	border-color: #707070;*/
-	box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.5)
+	box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.5);
+	visibility: hidden;
 }
-.logo{
+.logo{c
 	grid-column: 1;
 	width: 60%;
 }
@@ -86,7 +111,7 @@ h3{
 .aircon{
 	grid-column: 4;
 	grid-row:1;
-	
+
 }
 .button{
 	text-decoration: none;
@@ -103,6 +128,7 @@ h3{
 	/*box-shadow: 4px -4px 10px 5px rgba(0,0,0,0.5);*/
 	box-shadow: var(--main-box-shadow);
 	border-radius: 20px;
+	list-style-type: none;
 }
 
 .utility{
@@ -132,7 +158,7 @@ h3{
 	padding: 7px;
 	margin: 20px;
 	box-shadow: var(--main-box-shadow);
-	border-radius: 20px;	
+	border-radius: 20px;
 	background: #243441;
 	cursor: pointer;
 }
@@ -148,6 +174,7 @@ h3{
 	padding: 25px;
 	margin: 40px;
 	font-size: 25px;
+	text-align: center;
 	border-radius: 20px;
 	margin-top: 120px;
 	border-style: solid;
@@ -157,6 +184,10 @@ h3{
 
 .slidecontainer {
   width: 100%; /* Width of the outside container */
+}
+
+.roomnumber {
+
 }
 
 .decincbutton{
@@ -246,17 +277,21 @@ input[type=number] {
 	grid-row: 1;
 }
 
+#settempwrapper1 > p, .qty {
+	font-size: 1.5vw;
+
+}
+
 .qty{
 	background:#243441;
 	color: #0AFFEF;
 	border: none;
 	width: 28px;
 	height: 28px;
-	font-size:25px;
 	grid-column: 1;
 	grid-row: 2;
-	margin-right:45px;
-	margin-left:15px;
+	margin-right:3.5vw;
+	margin-left:25px;
 }
 
 .qty-plus{
@@ -321,7 +356,7 @@ input[type=number] {
 
 .fanspeedheader{
 	color: #ffffff;
-	font-size: 15px;
+	font-size: 15vw;
 	grid-column: 1;
 	grid-row: 1;
 }
@@ -331,6 +366,10 @@ input[type=number] {
   cursor: not-allowed;
 }
 
+a.disableClick {
+  pointer-events: none;
+  cursor: default;
+}
 .airconmode{
 	display:flex;
 	flex-direction: column;
@@ -344,8 +383,6 @@ input[type=number] {
 	border-style: solid;
 	border-width: 0.5;
 	border-color: #5C5C5C;
-	padding: 10px;
-	margin: 10px;
 	box-shadow: var(--main-box-shadow);
 	border-radius: 20px;
 	text-align: center;
@@ -375,6 +412,16 @@ input[type=number] {
 .onoffwrapper{
 	grid-column: 1;
 	grid-row:1;
+}
+
+.setSpeedBtn {	
+	border: none;
+	width: 100%;
+	font-size: 16px;
+	font-family: times new roman;
+	background: #243441;
+	color: #8A959D;
+	cursor: pointer;
 }
 
 *:focus{

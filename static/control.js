@@ -1,4 +1,4 @@
-const numRoom = 5;
+const numRoom = 1;
 let curRoom = 1;
 
 const setRoom = (roomX) => {
@@ -40,12 +40,18 @@ const setfanSlider = (val) => {
 
 function buttonChange(sign, room) {
 	var slider = document.getElementById("room"+room+"fanslider");
-	slider.value = parseInt(slider.value) + parseInt(sign) * 10;
+	slider.value = parseInt(slider.value) + parseInt(sign) * 33;
 }
 
-function setroomValue(number){
-		var roomvalue = document.getElementById("room"+number+"fanslider").value;
-		localStorage.setItem("room"+number+"_value", roomvalue);
+async function setroomValue(number){
+	document.getElementById("room1IncBtn").disabled = true;
+	document.getElementById("room1DecBtn").disabled = true;
+	var roomvalue = document.getElementById("room"+number+"fanslider").value;
+	localStorage.setItem("room"+number+"_value", roomvalue);	
+	await new Promise(resolve => setTimeout(resolve, 1000));
+	document.getElementById("room1IncBtn").disabled = false;
+	document.getElementById("room1DecBtn").disabled = false;
+	console.log("finished submit");
 }
 
 function getroomValue(number){
@@ -188,7 +194,8 @@ function getairconsignal(number){
 document.addEventListener("DOMContentLoaded", () => {
 	// read cookie
 	const url = document.cookie;
-	setRoom(url.slice(url.length-1));
+	//~ setRoom(url.slice(url.length-1));
+	setRoom(1);
 	// read fan
 	for (let i = 1; i <= numRoom; ++i) {
 		setfanSlider(i)
@@ -207,3 +214,25 @@ document.addEventListener("DOMContentLoaded", () => {
 		console.log(`Room3 air con is off`);
 	}
 });
+
+function toggleLight() {
+	if (document.getElementById("lightOffBtnOff"))
+	{
+		document.getElementById("lightOffBtnOff").click();
+	}
+	else
+	{
+		document.getElementById("lightOnBtnOff").click();		
+	}
+}
+
+function toggleFan() {
+	if (document.getElementById("fanOffBtnOff"))
+	{
+		document.getElementById("fanOffBtnOff").click();
+	}
+	else
+	{
+		document.getElementById("fanOnBtnOff").click();
+	}
+}
